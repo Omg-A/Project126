@@ -24,17 +24,30 @@ function setup(){
 }
 
 function draw(){
+    song1_status = song1.isPlaying();
+    song2_status = song2.isPlaying();
+
     image(video, 0, 0, 600, 500);
 
     fill("red");
     stroke("red");
+
     if(scoreLeftWrist > 0.2){
         circle(leftWristX, leftWristY, 20);
         song2.stop();
+
+        if(song1_status == false){
+            song1.play();
+        }
     }
 
-    if(song1.isPlaying() == false){
-        song1.play();
+    if(scoreRightWrist > 0.2){
+        circle(rightWristX, rightWristY, 20);
+        song1.stop();
+
+        if(song2_status == false){
+            song2.play();
+        }
     }
 }
 
